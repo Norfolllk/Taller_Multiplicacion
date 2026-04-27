@@ -1,0 +1,239 @@
+/* =============================================
+   multiplicar.css
+   Estilo: Tecnológico / Futurista
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+/* --- Variables de color --- */
+:root {
+    --bg-dark:      #0a0e1a;
+    --bg-card:      #111827;
+    --accent:       #00f5d4;
+    --accent2:      #7c3aed;
+    --text-main:    #e2e8f0;
+    --text-muted:   #64748b;
+    --fila-bg:      #1e293b;
+    --fila-hover:   #0f3460;
+    --border:       #1e40af44;
+    --shadow:       0 0 24px #00f5d444;
+}
+
+/* --- Reset básico --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Body --- */
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    /* Fondo con patrón de rejilla tecnológica */
+    background-image:
+        linear-gradient(rgba(0,245,212,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,245,212,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* --- Header --- */
+header {
+    text-align: center;
+    padding: 2.5rem 1rem 1rem;
+}
+
+header h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(1.6rem, 5vw, 2.8rem);
+    font-weight: 900;
+    color: var(--accent);
+    text-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent2);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    animation: glow 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px var(--accent); }
+    to   { text-shadow: 0 0 30px var(--accent), 0 0 60px var(--accent2); }
+}
+
+.subtitulo {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    letter-spacing: 2px;
+}
+
+/* --- Main --- */
+main {
+    width: 100%;
+    max-width: 520px;
+    padding: 1.5rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Controles (caja de texto + botón)*/
+.controles {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.controles label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Caja de texto */
+.controles input[type="number"] {
+    width: 90px;
+    padding: 0.6rem 0.8rem;
+    background: var(--fila-bg);
+    border: 1px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    text-align: center;
+    outline: none;
+    transition: box-shadow 0.2s;
+    /* Quitar flechas del input number */
+    -moz-appearance: textfield;
+}
+.controles input[type="number"]::-webkit-inner-spin-button,
+.controles input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+.controles input[type="number"]:focus {
+    box-shadow: 0 0 12px var(--accent);
+}
+
+/* Botón PROBAR */
+.controles button {
+    padding: 0.65rem 1.6rem;
+    background: transparent;
+    border: 2px solid var(--accent);
+    border-radius: 6px;
+    color: var(--accent);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.1s;
+}
+.controles button:hover {
+    background: var(--accent);
+    color: var(--bg-dark);
+    box-shadow: var(--shadow);
+    transform: scale(1.05);
+}
+.controles button:active {
+    transform: scale(0.97);
+}
+
+/* Texto de ayuda */
+.ayuda {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 1px;
+}
+.ayuda strong {
+    color: var(--accent);
+}
+
+/* Contenedor de la tabla */
+.tabla-contenedor {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    box-shadow: 0 4px 32px #0004, inset 0 0 40px #00f5d408;
+}
+
+/* Items (filas que se repiten) */
+.fila {
+    background: var(--fila-bg);
+    border-left: 3px solid var(--accent);
+    padding: 0.65rem 1.2rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: var(--text-main);
+    letter-spacing: 2px;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+    animation: slideIn 0.3s ease both;
+}
+.fila:hover {
+    background: var(--fila-hover);
+    color: var(--accent);
+    transform: translateX(6px);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Animaciones escalonadas para cada fila */
+.fila:nth-child(1)  { animation-delay: 0.03s; }
+.fila:nth-child(2)  { animation-delay: 0.06s; }
+.fila:nth-child(3)  { animation-delay: 0.09s; }
+.fila:nth-child(4)  { animation-delay: 0.12s; }
+.fila:nth-child(5)  { animation-delay: 0.15s; }
+.fila:nth-child(6)  { animation-delay: 0.18s; }
+.fila:nth-child(7)  { animation-delay: 0.21s; }
+.fila:nth-child(8)  { animation-delay: 0.24s; }
+.fila:nth-child(9)  { animation-delay: 0.27s; }
+.fila:nth-child(10) { animation-delay: 0.30s; }
+
+/* Mensaje de error */
+.error {
+    color: #f87171;
+    border-left-color: #f87171;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/*  Footer -*/
+footer {
+    margin-top: auto;
+    padding: 1.5rem;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-align: center;
+    border-top: 1px solid var(--border);
+    width: 100%;
+    text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    header h1 { font-size: 1.4rem; letter-spacing: 2px; }
+    .controles { flex-direction: column; }
+    .controles input[type="number"] { width: 120px; }
+    .fila { font-size: 0.9rem; }
+}
